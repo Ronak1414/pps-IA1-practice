@@ -1,0 +1,133 @@
+clang version 7.0.0-3~ubuntu0.18.04.1 (tags/RELEASE_700/final)
+gcc -g p3original.c
+ gdb ./a.out
+GNU gdb (Ubuntu 8.1.1-0ubuntu1) 8.1.1
+Copyright (C) 2018 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.  Type "show copying"
+and "show warranty" for details.
+This GDB was configured as "x86_64-linux-gnu".
+Type "show configuration" for configuration details.
+For bug reporting instructions, please see:
+<http://www.gnu.org/software/gdb/bugs/>.
+Find the GDB manual and other documentation resources online at:
+<http://www.gnu.org/software/gdb/documentation/>.
+For help, type "help".
+Type "apropos word" to search for commands related to "word"...
+Reading symbols from ./a.out...done.
+(gdb) b main
+Breakpoint 1 at 0x890: file p3original.c, line 32.
+(gdb) b main
+Note: breakpoint 1 also set at pc 0x890.
+Breakpoint 2 at 0x890: file p3original.c, line 32.
+(gdb) r
+Starting program: /home/runner/pps-IA1-practice/a.out 
+warning: Error disabling address space randomization: Operation not permitted
+
+Breakpoint 1, main () at p3original.c:32
+32    n=input_n();
+(gdb) s
+input_n () at p3original.c:3
+3   {
+(gdb) n
+5     printf("Enter the number\n");
+(gdb) n
+Enter the number
+6     scanf("%d",&n);
+(gdb) n
+5
+7     return n;
+(gdb) n
+8   }
+(gdb) n
+main () at p3original.c:33
+33    add=sum(n);
+(gdb) s
+sum (n=5) at p3original.c:12
+12    int add=0;
+(gdb) n
+13    for(int i=0;i<=n;i++)
+(gdb) n
+15      add=add+i;
+(gdb) n
+13    for(int i=0;i<=n;i++)
+(gdb) p add
+$1 = 0
+(gdb) n
+15      add=add+i;
+(gdb) n
+13    for(int i=0;i<=n;i++)
+(gdb) p add
+$2 = 1
+(gdb) n
+15      add=add+i;
+(gdb) n
+13    for(int i=0;i<=n;i++)
+(gdb) n
+15      add=add+i;
+(gdb) p add
+$3 = 3
+(gdb) n
+13    for(int i=0;i<=n;i++)
+(gdb) n
+15      add=add+i;
+(gdb) p add
+$4 = 6
+(gdb) n
+13    for(int i=0;i<=n;i++)
+(gdb) n
+15      add=add+i;
+(gdb) p add
+$5 = 10
+(gdb) n
+13    for(int i=0;i<=n;i++)
+(gdb) n
+17   return add; 
+(gdb) n
+18  }
+(gdb) n
+main () at p3original.c:34
+34    output(n,add);
+(gdb) s
+output (n=5, sum=15) at p3original.c:21
+21  { printf("1");
+(gdb) n
+22    for(int i=2;i<=n;i++)
+(gdb) n
+24      printf(" + %d  ",i);
+(gdb) n
+22    for(int i=2;i<=n;i++)
+(gdb) n
+24      printf(" + %d  ",i);
+(gdb) n
+22    for(int i=2;i<=n;i++)
+(gdb) n
+24      printf(" + %d  ",i);
+(gdb) n
+22    for(int i=2;i<=n;i++)
+(gdb) n
+24      printf(" + %d  ",i);
+(gdb) n
+22    for(int i=2;i<=n;i++)
+(gdb) n
+26    printf("\n is %d",sum);
+(gdb) n
+1 + 2   + 3   + 4   + 5  
+27  }
+(gdb) n
+main () at p3original.c:35
+35    return 0;
+(gdb) n
+36  }(gdb) n
+__libc_start_main (main=0x56514ea00888 <main>, argc=1, argv=0x7fffa1833bf8, 
+    init=<optimized out>, fini=<optimized out>, rtld_fini=<optimized out>, 
+    stack_end=0x7fffa1833be8) at ../csu/libc-start.c:344
+344 ../csu/libc-start.c: No such file or directory.
+(gdb) n
+ is 15[Inferior 1 (process 595) exited normally]
+(gdb) n
+The program is not being run.
+(gdb) n
+The program is not being run.
+(gdb) 
