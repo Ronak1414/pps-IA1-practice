@@ -1,0 +1,157 @@
+clang version 7.0.0-3~ubuntu0.18.04.1 (tags/RELEASE_700/final)
+gcc -g p8final.c
+ gdb ./a.out
+GNU gdb (Ubuntu 8.1.1-0ubuntu1) 8.1.1
+Copyright (C) 2018 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.  Type "show copying"
+and "show warranty" for details.
+This GDB was configured as "x86_64-linux-gnu".
+Type "show configuration" for configuration details.
+For bug reporting instructions, please see:
+<http://www.gnu.org/software/gdb/bugs/>.
+Find the GDB manual and other documentation resources online at:
+<http://www.gnu.org/software/gdb/documentation/>.
+For help, type "help".
+Type "apropos word" to search for commands related to "word"...
+Reading symbols from ./a.out...done.
+(gdb) b main
+Breakpoint 1 at 0xa50: file p8final.c, line 71.
+(gdb) r
+Starting program: /home/runner/pps-IA1-practice/a.out 
+warning: Error disabling address space randomization: Operation not permitted
+
+Breakpoint 1, main () at p8final.c:71
+71  {
+(gdb) n
+72    int n=input_n();
+(gdb) s
+input_n () at p8final.c:8
+8   {
+(gdb) n
+10    printf("enter the array size");
+(gdb) n
+11    scanf("%d",&n);
+(gdb) n
+enter the array size3
+12    return n;
+(gdb) n
+13  }
+(gdb) n
+main () at p8final.c:73
+73    complex c[n],sum;
+(gdb) s
+74    input_complex(n,c);
+(gdb) s
+input_complex (n=3, c=0x7ffc734ca8a0)
+    at p8final.c:36
+36    for(int i=0;i<n;i++)
+(gdb) n
+37    {c[i]=input();}
+(gdb) n
+Enter the real part: 2
+Enter the imaginary part: 3
+36    for(int i=0;i<n;i++)
+(gdb) n
+37    {c[i]=input();}
+(gdb) n
+Enter the real part: 3
+Enter the imaginary part: 4
+36    for(int i=0;i<n;i++)
+(gdb) n
+37    {c[i]=input();}
+(gdb) n
+Enter the real part: 5
+Enter the imaginary part: 6
+36    for(int i=0;i<n;i++)
+(gdb) n
+39  }
+(gdb) n
+main () at p8final.c:75
+75    sum=add_complex(n,c);
+(gdb) s
+add_complex (n=3, c=0x7ffc734ca8a0) at p8final.c:44
+44    sum.r=0;
+(gdb) n
+45    sum.i=0;
+(gdb) n
+46    for (int i=0;i<n;i++)
+(gdb) n
+48      sum=add(sum,c[i]);
+(gdb) s
+add (a=..., b=...) at p8final.c:29
+29    sum.r=a.r+b.r;
+(gdb) p sum.r
+$1 = 1.62147127e+31
+(gdb) n
+30    sum.i=a.i+b.i;
+(gdb) p sum.i
+$2 = 4.59121429e-41
+(gdb) n
+31    return sum;
+(gdb) n
+32  }
+(gdb) n
+add_complex (n=3, c=0x7ffc734ca8a0) at p8final.c:46
+46    for (int i=0;i<n;i++)
+(gdb) n
+48      sum=add(sum,c[i]);
+(gdb) p sum.r
+$3 = 2
+(gdb) n
+46    for (int i=0;i<n;i++)
+(gdb) n
+48      sum=add(sum,c[i]);
+(gdb) n
+46    for (int i=0;i<n;i++)
+(gdb) p sum.r
+$4 = 10
+(gdb) n
+50      return sum;
+(gdb) n
+51  }
+(gdb) n
+main () at p8final.c:76
+76    output(n,c,sum);
+(gdb) s
+output (n=3, c=0x7ffc734ca8a0, result=...)
+    at p8final.c:55
+55      if(n==1)
+(gdb) n
+61        printf("The sum of ");
+(gdb) n
+62        for( i=0;i<n-1;i++)
+(gdb) n
+64          printf("(%0.1f + %0.1fi) + ",c[i].r,c[i].i);
+(gdb) n
+62        for( i=0;i<n-1;i++)
+(gdb) n
+64          printf("(%0.1f + %0.1fi) + ",c[i].r,c[i].i);
+(gdb) n
+62        for( i=0;i<n-1;i++)
+(gdb) n
+66        printf("(%0.1f + %0.1fi)  is %0.1f +%0.1fi",c[n-1].r,c[n-1].i,result.r,result.i);
+(gdb) n
+68    }
+(gdb) n
+main () at p8final.c:77
+77    return 0;
+(gdb) n
+78  }(gdb) n
+__libc_start_main (main=0x55eac9400a3f <main>, 
+    argc=1, argv=0x7ffc734caa18, 
+    init=<optimized out>, fini=<optimized out>, 
+    rtld_fini=<optimized out>, 
+    stack_end=0x7ffc734caa08)
+    at ../csu/libc-start.c:344
+344 ../csu/libc-start.c: No such file or directory.
+(gdb) n
+The sum of (2.0 + 3.0i) + (3.0 + 4.0i) + (5.0 + 6.0i)  is 10.0 +13.0i[Inferior 1 (process 1252) exited normally]
+(gdb) n
+The program is not being run.
+(gdb) n
+The program is not being run.
+(gdb) n
+The program is not being run.
+(gdb) 
