@@ -1,0 +1,93 @@
+clang version 7.0.0-3~ubuntu0.18.04.1 (tags/RELEASE_700/final)
+gcc -g p5final.c
+ gdb ./a.out
+GNU gdb (Ubuntu 8.1.1-0ubuntu1) 8.1.1
+Copyright (C) 2018 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.  Type "show copying"
+and "show warranty" for details.
+This GDB was configured as "x86_64-linux-gnu".
+Type "show configuration" for configuration details.
+For bug reporting instructions, please see:
+<http://www.gnu.org/software/gdb/bugs/>.
+Find the GDB manual and other documentation resources online at:
+<http://www.gnu.org/software/gdb/documentation/>.
+For help, type "help".
+Type "apropos word" to search for commands related to "word"...
+Reading symbols from ./a.out...done.
+(gdb) b main
+Breakpoint 1 at 0x86d: file p5final.c, line 29.
+(gdb) r
+Starting program: /home/runner/pps-IA1-practice/a.out 
+warning: Error disabling address space randomization: Operation not permitted
+
+Breakpoint 1, main () at p5final.c:29
+29    n=input();
+(gdb) s
+input () at p5final.c:3
+3   {
+(gdb) n
+5     printf("Enter the number\n");
+(gdb) n
+Enter the number
+6     scanf("%f",&n);
+(gdb) n
+3 
+7     return n;
+(gdb) n
+8   }
+(gdb) n
+main () at p5final.c:30
+30    result=my_sqrt(n);
+(gdb) s
+my_sqrt (n=3) at p5final.c:12
+12  float t=0,x=n/2;
+(gdb) n
+13  for(int i=0;i<x;i++)
+(gdb) n
+15    x=(x+n/x)/2;
+(gdb) n
+16    t=x;
+(gdb) p t
+$1 = 0
+(gdb) n
+13  for(int i=0;i<x;i++)
+(gdb) n
+15    x=(x+n/x)/2;
+(gdb) n
+16    t=x;
+(gdb) p t
+$2 = 1.75
+(gdb) n
+13  for(int i=0;i<x;i++)
+(gdb) n
+18  return t;
+(gdb) p t
+$3 = 1.73214293
+(gdb) n
+19  }
+(gdb) n
+main () at p5final.c:31
+31    output(n,result);
+(gdb) s
+output (n=3, result=1.73214293) at p5final.c:23
+23    printf("Squre root of %0.3f is %0.3f",n,result);
+(gdb) n
+24  }
+(gdb) n
+main () at p5final.c:32
+32    return 0;
+(gdb) n
+33  }(gdb) n
+__libc_start_main (main=0x5593e7800865 <main>, argc=1, argv=0x7ffc8e851058, 
+    init=<optimized out>, fini=<optimized out>, rtld_fini=<optimized out>, 
+    stack_end=0x7ffc8e851048) at ../csu/libc-start.c:344
+344 ../csu/libc-start.c: No such file or directory.
+(gdb) n
+Squre root of 3.000 is 1.732[Inferior 1 (process 1682) exited normally]
+(gdb) n
+The program is not being run.
+(gdb) n
+The program is not being run.
+(gdb) 
